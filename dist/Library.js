@@ -4,12 +4,6 @@ var BookStatus;
     BookStatus["Available"] = "Available";
     BookStatus["Borrowed"] = "Borrowed"; //1
 })(BookStatus || (BookStatus = {}));
-var MemberRank;
-(function (MemberRank) {
-    MemberRank["Silver"] = "Silver";
-    MemberRank["Gold"] = "Gold";
-    MemberRank["Platinum"] = "Platinum"; // 2
-})(MemberRank || (MemberRank = {}));
 // tạo class xử lý
 class Book {
     constructor(id, name, status = BookStatus.Available) {
@@ -40,10 +34,9 @@ class Book {
 }
 // có thể mở rộng việc đk sách 
 class Borrower {
-    constructor(id, name, rank = MemberRank.Silver) {
+    constructor(id, name) {
         this.id = id;
         this.name = name;
-        this.rank = rank;
         this.borrowedBooks = [];
     }
 }
@@ -121,7 +114,7 @@ class LibraryManager {
     listBorrowers() {
         console.log("Danh sách người mượn");
         this.borrowers.forEach(borrower => {
-            console.log(`- ${borrower.id} ++ ${borrower.name} ++ [${borrower.rank}]`);
+            console.log(`- ${borrower.id} ++ ${borrower.name}`);
         });
     }
     listBorrowedBooks(borrowerID) {

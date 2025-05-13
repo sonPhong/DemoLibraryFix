@@ -3,12 +3,6 @@ enum BookStatus {
     Borrowed = "Borrowed" //1
 }
 
-enum MemberRank {
-    Silver = "Silver", // 0
-    Gold = "Gold", // 1
-    Platinum = "Platinum" // 2
-}
-
 
 interface Book {
     id: string;
@@ -21,7 +15,6 @@ interface Borrower {
     id: string;
     name: string;
     borrowedBooks: Book[],
-    rank: MemberRank;
 }
 
 // tạo class xử lý
@@ -65,7 +58,7 @@ class Borrower {
     constructor(
         public id: string,
         public name: string,
-        public rank: MemberRank = MemberRank.Silver,
+        
     ) { }
 }
 
@@ -149,7 +142,7 @@ class LibraryManager {
     listBorrowers(): void {
         console.log("Danh sách người mượn");
         this.borrowers.forEach(borrower => {
-            console.log(`- ${borrower.id} ++ ${borrower.name} ++ [${borrower.rank}]`);
+            console.log(`- ${borrower.id} ++ ${borrower.name}`);
         });
     }
 
